@@ -7,7 +7,7 @@ password = os.environ['password']
 host = os.environ['host']
 
 '''database engine needed for sqlalchemy - the link used to establish connection to SQL database'''
-engine_url = f'mysql+pymysql://{user_name}:{password}@{host}/comeet_jobs'
+engine_url = f'mysql+pymysql://{user_name}:{password}@{host}/whats_for_dinner'
 
 '''logging'''
 formatter = logging.Formatter('%(asctime)s-%(levelname)s-FUNC:%(funcName)s-LINE:%(lineno)d-%(message)s')
