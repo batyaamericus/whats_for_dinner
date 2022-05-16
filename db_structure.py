@@ -27,6 +27,7 @@ class Recipe(Base):
 
     # relationships
     directions = relationship("RecipeDescription", back_populates="recipe", cascade="all, delete-orphan")
+    nutrition_facts = relationship("RecipeNutrition", backref="recipe", cascade="all, delete-orphan")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
@@ -44,6 +45,30 @@ class RecipeDirection(Base):
 
     # relationships
     recipe = relationship("Recipe", back_populates="directions")
+
+    # logging
+    config.db_setup_logger.info(f'{__tablename__} created')
+
+
+class RecipeNutrition(Base):
+    __tablename__ = 'nutrition_facts'
+    config.db_setup_logger.info(f'creating {__tablename__}')
+
+    # columns
+    nutrition_id = Column(Integer, primary_key=True)
+    recipe_id = Column(Integer, ForeignKey('recipes.recipe_id'), nullable=False)
+    calories = Column(String(50))
+    total_fat = Column(String(50))
+    sat_fat = Column(String(50))
+    cholesterol = Column(String(50))
+    sodium = Column(String(50))
+    carbohydrate = Column(String(50))
+    fiber = Column(String(50))
+    protein = Column(String(50))
+    sugar = Column(String(50))
+
+    # relationships
+    recipe = relationship("Recipe", back_populates="nutrition_facts")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
