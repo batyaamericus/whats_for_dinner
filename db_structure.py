@@ -1,8 +1,7 @@
-from sqlalchemy import Column, func, Boolean, Integer, String, DateTime, Text, ForeignKey, Enum
+from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.dialects.mysql import ENUM
 from sqlalchemy.orm import declarative_base, relationship
 import config
-from collections import namedtuple
 
 # base class for all of our tables
 Base = declarative_base()
@@ -28,6 +27,7 @@ class Recipe(Base):
     directions = relationship("RecipeDescription", back_populates="recipe", cascade="all, delete-orphan")
     nutrition_facts = relationship("RecipeNutrition", backref="recipe", cascade="all, delete-orphan")
     ingredients = relationship("RecipeIngredients", back_populates="recipe", cascade="all, delete-orphan")
+    recipe_cats = relationship("RecipeCategories", back_populates="recipe", cascade="all, delete-orphan")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
@@ -86,6 +86,38 @@ class RecipeIngredients(Base):
 
     # relationships
     recipe = relationship("Recipe", back_populates="ingredients")
+
+    # logging
+    config.db_setup_logger.info(f'{__tablename__} created')
+
+
+class Category(Base):
+    __tablename__ = 'categories'
+    config.db_setup_logger.info(f'creating {__tablename__}')
+
+    # columns
+    category_id = Column(Integer, primary_key=True)
+    cat_name = Column(String(50))
+
+    # relationships
+    cats_to_recipe = relationship("RecipeCategories", back_populates="category", cascade="all, delete-orphan")
+
+    # logging
+    config.db_setup_logger.info(f'{__tablename__} created')
+
+
+class RecipeCategories(Base):
+    __tablename__ = 'recipe_to_category'
+    config.db_setup_logger.info(f'creating {__tablename__}')
+
+    # columns
+    id = Column(Integer, primary_key=True)
+    recipe_id = Column(Integer, ForeignKey('recipes.recipe_id'), nullable=False)
+    category_id = Column(Integer, ForeignKey('categories.category_id'), nullable=False)
+
+    # relationships
+    recipe = relationship("Recipe", back_populates="recipe_cats")
+    category = relationship("Category", back_populates="cats_to_recipe")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
