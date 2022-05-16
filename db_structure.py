@@ -22,12 +22,12 @@ class Recipe(Base):
     total_cook_time_min = Column(Integer)
     servings = Column(Integer)
     image_url = Column(Text)
-    # TODO many to many table for ingredients, category tags
-    # TODO one to many table for nutritional facts
+    # TODO many to many table for category tags
 
     # relationships
     directions = relationship("RecipeDescription", back_populates="recipe", cascade="all, delete-orphan")
     nutrition_facts = relationship("RecipeNutrition", backref="recipe", cascade="all, delete-orphan")
+    ingredients = relationship("RecipeIngredients", back_populates="recipe", cascade="all, delete-orphan")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
@@ -69,6 +69,23 @@ class RecipeNutrition(Base):
 
     # relationships
     recipe = relationship("Recipe", back_populates="nutrition_facts")
+
+    # logging
+    config.db_setup_logger.info(f'{__tablename__} created')
+
+
+class RecipeIngredients(Base):
+    __tablename__ = 'ingredients'
+    config.db_setup_logger.info(f'creating {__tablename__}')
+
+    # columns
+    ingredient_id = Column(Integer, primary_key=True)
+    recipe_id = Column(Integer, ForeignKey('recipes.recipe_id'), nullable=False)
+    ingredient_no = Column(Integer)
+    ingredient = Column(String(256))
+
+    # relationships
+    recipe = relationship("Recipe", back_populates="ingredients")
 
     # logging
     config.db_setup_logger.info(f'{__tablename__} created')
