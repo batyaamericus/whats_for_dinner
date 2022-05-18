@@ -1,21 +1,15 @@
-import authModel from "../models/UsersModel.js"
+import authModel from "../models/userModel.js"
 import 'dotenv/config';
 import jwt from "jsonwebtoken"
+
 
 async function logUser(req, res) {
   const user = req.currentUser[0];
   console.log("inside login-user controller",user.id)
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' });
-    try{
-      console.log("geting users seaved pets")
-      const petList = await authModel.getSavedpets(user.id);
-      console.log(petList);
-      res.cookie("token", token, { httpOnly: true });
-      res.send ({token:token, id:user.id ,firstName: user.firstName, lastName: user.lastName, is_admin:user.is_admin, savedPets:petList});
-      } catch (err) {
-        console.log(err);
-        res.status(500).send(err);
-      }
+  res.cookie("token", token, { httpOnly: true });
+  res.send ({token:token, id:user.id ,firstName: user.firstName, lastName: user.lastName, is_admin:user.is_admin, savedPets:petList});
+
 }
 
 

@@ -1,4 +1,4 @@
-import authModel from "../models/UsersModel.js"
+import authModel from "../models/userModel.js"
 
 async function CheckMail(req, res, next) {
   console.log('checking mail')

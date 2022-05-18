@@ -6,7 +6,8 @@ import hashPassword from "../midlewares/hashPassword.js";
 import checkPassword from "../midlewares/checkUserPassword.js";
 import CheckMail from "../midlewares/CheckMailUnique.js";
 import doPasswordsMatch from "../midlewares/doPasswordsMatch.js";
-import {newUserSchema, loginSchema, updateUserSchema} from "../schemas/users.js";
+
+import {newUserSchema, loginSchema, updateUserSchema} from "../schemas/userSchemas.js";
 
 UserRoute.route("/signup")
     .post(Validation(newUserSchema), doPasswordsMatch, CheckMail, hashPassword, submitNewUser)
