@@ -16,7 +16,7 @@ UserRoute.route("/signup")
 UserRoute.route("/login")
     .post(validation(loginSchema), checkPassword, logUser)
 
-UserRoute.route("/:id")
-    .put(verifyToken, validation(updateUserSchema), checkMailUnique, hashPassword, updateUserData);
+UserRoute.route("/update")
+    .put(verifyToken, validation(updateUserSchema), doPasswordsMatch, checkMailUnique, hashPassword, updateUserData);
 
 export default UserRoute;

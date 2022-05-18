@@ -23,4 +23,12 @@ async function logIn(email) {
     }
   }
 
-  export default { RegNewUser, logIn};
+  async function updateUser(userId,change){
+    const queryResult = await dbConnection.from('users')
+                                          .where({'user_id': userId})
+                                          .update(change);
+    console.log(queryResult);
+    return queryResult;
+  }
+
+  export default { RegNewUser, logIn, updateUser};

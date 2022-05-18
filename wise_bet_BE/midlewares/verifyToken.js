@@ -6,7 +6,7 @@ async function verifyToken(req, res, next) {
     console.log(token)
   try {
     if (!token) {
-        console.log('Missing token')
+      console.log('Missing token')
       res.status(401).send('Missing token');
       return;
     }
@@ -19,7 +19,7 @@ async function verifyToken(req, res, next) {
       }
       if (decoded) {
         console.log('valid Token')
-        req.body.userId = decoded.id;
+        req.body.user_id = decoded.id;
         next();
       }
     });
