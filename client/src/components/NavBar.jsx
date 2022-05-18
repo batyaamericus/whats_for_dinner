@@ -1,16 +1,17 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import "./NavBar.css";
 
 const NavBar = () => {
   const { activeUser, onLogout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Wise Bet</Navbar.Brand>
+        <Navbar.Brand className="wiseLogo"onClick={() => navigate("/")}>Wise Bet</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
