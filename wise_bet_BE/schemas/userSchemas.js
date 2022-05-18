@@ -31,7 +31,7 @@ const newUserSchema = {
       confirmPwd: { type: "string", minLength: 6}
       },
       required: ["name", "lastName", "email", "pwd", "confirmPwd"],
-      additionalProperties: false,
+      additionalProperties: true,
   };
   
 

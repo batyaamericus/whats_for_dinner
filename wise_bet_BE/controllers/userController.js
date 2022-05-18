@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 async function logUser(req, res) {
   const user = req.currentUser[0];
-  console.log("inside login-user controller",user.id)
+  console.log("inside login-user controller",user.user_id)
   const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, { expiresIn: '24h' });
   res.cookie("token", token, { httpOnly: true });
   res.send ({ id:user.user_id ,name: user.name, lastName: user.lastName, email:user.email});
@@ -28,13 +28,11 @@ async function submitNewUser(req, res){
 
 async function updateUserData(req, res){
     try{
-    console.log("inside update user data")
-    const userId = req.params.id;
+    console.log("inside update user data: ")
+    const { user_id, name, lastName, email } = req.body;
     const change = req.body;
-    console.log(userId, change);
-    const result = await UserModel.updateUser(userId,change);
-    console.log(result);
-    res.status(200).send({update: "sucsses"});
+    const result = await authModel.updateUser(user_id, change);
+    res.status(200).send({user_id, name, lastName, email});
     } catch(err){
         res.status(500).send(err);
     }
