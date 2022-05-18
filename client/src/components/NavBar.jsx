@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import "./NavBar.css";
 
 const NavBar = () => {
-  const { activeUser, onLogout } = useAuth();
+  const { activeUser, onLogOut } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -31,7 +31,6 @@ const NavBar = () => {
             >
               Search
             </Link>
-           
           </Nav>
           <Nav>
             {/*  <Link
@@ -41,36 +40,36 @@ const NavBar = () => {
             >
               Login
             </Link> */}
-           
-              {/* {activeUser && ( */}
+
+            {/* {activeUser && ( */}
+            <Link
+              style={{ textDecoration: "none" }}
+              className="styleNavLink navHome px-5 "
+              to="/profile"
+            >
+              Profile
+            </Link>
+            {/* )} */}
+            {!activeUser && (
               <Link
                 style={{ textDecoration: "none" }}
-                className="styleNavLink navHome px-5 "
-                to="/profile"
+                className="styleNavLink navProfile px-5"
+                to="/auth"
               >
-                Profile
+                Authenticate
               </Link>
-              {/* )} */}
-              {!activeUser && (
-                <Link
-                  style={{ textDecoration: "none" }}
-                  className="styleNavLink navProfile px-5"
-                  to="/auth"
-                >
-                  Authenticate
-                </Link>
-              )}
+            )}
 
-              {activeUser && (
-                <Link
-                  to="/#"
-                  style={{ textDecoration: "none" }}
-                  className="styleNavLink navHome px-5"
-                >
-                  Logout
-                </Link>
-              )}
-         
+            {activeUser && (
+              <Link
+                to="/"
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navHome px-5"
+                onClick={() => onLogOut()}
+              >
+                Logout
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

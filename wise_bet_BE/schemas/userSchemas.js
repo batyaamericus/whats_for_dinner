@@ -15,9 +15,9 @@ const newUserSchema = {
     type: 'object',
     properties: {
       email: { type: 'string' },
-      password: { type: 'string' },
+      pwd: { type: 'string' },
     },
-    required: ["email","password"],
+    required: ["email","pwd"],
     additionalProperties: false,
   };
 

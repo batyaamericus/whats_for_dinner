@@ -10,8 +10,7 @@ async function CheckMailUnique(req, res, next) {
         if (user.length === 0) {
             next();
         } else {
-            res.status(400).send({instancePath:"/",
-                                  message:"Email allready exists"});
+            res.status(400).send("Email allready exists");
         }
       } catch (err) {
         console.log(err);

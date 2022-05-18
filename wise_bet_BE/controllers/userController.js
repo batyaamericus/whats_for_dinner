@@ -8,7 +8,7 @@ async function logUser(req, res) {
   console.log("inside login-user controller",user.id)
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' });
   res.cookie("token", token, { httpOnly: true });
-  res.send ({token:token, id:user.id ,firstName: user.firstName, lastName: user.lastName, is_admin:user.is_admin, savedPets:petList});
+  res.send ({token:token, id:user.user_id ,firstName: user.name, lastName: user.lastName, email:user.email});
 
 }
 

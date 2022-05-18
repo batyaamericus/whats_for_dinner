@@ -1,15 +1,18 @@
-import axios from "axios";
 import React, { useState } from "react";
 import AuthContext from "../contexts/AuthContext.js";
 import { signUp } from "../services/services.js";
+import { useNavigate } from "react-router-dom";
 
+const LSuser = localStorage.getItem("user");
 function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [activeUser, setActiveUser] = useState(null);
+  const [activeUser, setActiveUser] = useState(
+    LSuser ? JSON.parse(LSuser) : null
+  );
   const [showAlert, setShowAlert] = useState(false);
   const [alertText, setAlertText] = useState("");
   const [alertType, setAlertType] = useState("");
-
+  const navigate = useNavigate();
   function clearAlert() {
     setTimeout(() => {
       setShowAlert(false);
@@ -26,9 +29,25 @@ function AuthProvider({ children }) {
   }
 
   async function handleSignUp(newUser) {
-    const user = await signUp(newUser);
-    setActiveUser(user);
-    console.log(user);
+    setIsLoading(true);
+    try {
+      const user = await signUp(newUser);
+      setActiveUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
+      setIsLoading(false);
+      navigate("/");
+    } catch (error) {
+      setShowAlert(true);
+      displayAlert(error.response.data.message, "danger");
+      setIsLoading(false);
+    }
+    clearAlert();
+  }
+
+  function handleLogOut() {
+    setActiveUser(null);
+    localStorage.clear();
+    navigate("/");
   }
 
   return (
@@ -42,6 +61,7 @@ function AuthProvider({ children }) {
         clearAlert,
         displayAlert,
         onSignUp: handleSignUp,
+        onLogOut: handleLogOut,
       }}
     >
       {children}
