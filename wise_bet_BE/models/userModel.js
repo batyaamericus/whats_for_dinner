@@ -1,9 +1,17 @@
 import { dbConnection } from "../index.js";
 
-async function logIn(email) {
+async function logIn(email, user_id) {
+    let queryResult;
     try {
-      console.log("inside login model")
-      const queryResult = await dbConnection.from("users").where({ email });
+      console.log("inside login model, user_id: ", user_id)
+      if(!user_id){
+        console.log("no userId")
+        queryResult = await dbConnection.from("users").where({ email });
+      } else {
+        console.log("is userId")
+        queryResult = await dbConnection.from("users").whereNot({user_id}).andWhere({ email });
+        console.log(queryResult);
+      }
       console.log(queryResult);
       return queryResult;
     } catch (err) {
