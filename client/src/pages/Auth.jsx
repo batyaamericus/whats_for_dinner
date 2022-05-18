@@ -4,7 +4,7 @@ import Login from "../components/Login";
 import Registration from "../components/Registration/Registration";
 
 const Auth = () => {
-  const [isMember, setIsMember] = useState(false);
+  const [isMember, setIsMember] = useState(true);
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");

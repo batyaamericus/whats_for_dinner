@@ -16,10 +16,7 @@ function Registration({
 }) {
   return (
     <>
-      <Form.Group
-        className="mb-3 personalData"
-        controlId="exampleForm.ControlInput1"
-      >
+      <Form.Group className="mb-3 personalData" controlId="exampleForm.name">
         <div>
           <Form.Label>Name</Form.Label>
           <Form.Control value={name} onChange={setName} type="text" />
@@ -29,15 +26,15 @@ function Registration({
           <Form.Control value={lastName} onChange={setLastName} type="text" />
         </div>
       </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3 " controlId="exampleForm.email">
         <Form.Label>Email address</Form.Label>
         <Form.Control value={email} onChange={setEmail} type="email" />
       </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3 " controlId="exampleForm.pwd">
         <Form.Label>Password</Form.Label>
         <Form.Control value={pwd} onChange={setPwd} type="password" />
       </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+      <Form.Group className="mb-3 " controlId="exampleForm.repwd">
         <Form.Label>Repeat Password</Form.Label>
         <Form.Control
           value={confirmPwd}
