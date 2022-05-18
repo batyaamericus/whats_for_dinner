@@ -9,6 +9,7 @@ import Home from "./pages/HomePage/Home";
 import Search from "./pages/Search/Search";
 import Profile from "./pages/User/UserProfile/Profile";
 import UserHomePage from "./pages/User/UserHomePage";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
 
 function App() {
   return (
@@ -17,9 +18,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/user" element={<UserHomePage />} />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <Search />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <UserHomePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </AuthProvider>
   );
