@@ -6,6 +6,7 @@ import AuthProvider from "./components/AuthProvider";
 import { Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Home from "./pages/HomePage/Home";
+import Search from "./pages/Search/Search";
 
 function App() {
   return (
