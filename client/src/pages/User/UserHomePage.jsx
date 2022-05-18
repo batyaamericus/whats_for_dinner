@@ -11,7 +11,8 @@ const UserHomePage = () => {
     showAlert,
 
     displayAlert,
-  } = useAuth();
+    } = useAuth();
+    console.log(activeUser);
 
   const [showUser, setShowUser] = useState();
   const navigate = useNavigate();
