@@ -33,6 +33,25 @@ const Auth = () => {
   return (
     <Container className="mt-5">
       <h2 className="display-3">{isMember ? "LogIn" : "Register"}</h2>
+      <p className="c-modal-toggle center">
+        {isMember ? (
+          <>
+            Are you not registered?{" "}
+            <Button variant="warning" onClick={() => setIsMember(false)}>
+              {" "}
+              Register here{" "}
+            </Button>{" "}
+          </>
+        ) : (
+          <>
+            Are you registered?{" "}
+            <Button variant="warning" onClick={() => setIsMember(true)}>
+              {" "}
+              Log In here{" "}
+            </Button>{" "}
+          </>
+        )}
+      </p>
       {isMember ? (
         <Login
           email={email}
@@ -54,7 +73,7 @@ const Auth = () => {
           setConfirmPwd={(e) => setConfirmPwd(e.target.value)}
         />
       )}
-      <div className="d-flex justify-content-end">
+      <div className="d-flex center">
         <Button
           variant="warning"
           onClick={isMember ? handleLogIn : handleSignUp}
@@ -76,25 +95,6 @@ const Auth = () => {
         </Button>
       </div>
       {showAlert && <Alert />}
-      <p className="c-modal-toggle center">
-        {isMember ? (
-          <>
-            Are you not registered?{" "}
-            <Button variant="warning" onClick={() => setIsMember(false)}>
-              {" "}
-              Register here{" "}
-            </Button>{" "}
-          </>
-        ) : (
-          <>
-            Are you registered?{" "}
-            <Button variant="warning" onClick={() => setIsMember(true)}>
-              {" "}
-              Log In here{" "}
-            </Button>{" "}
-          </>
-        )}
-      </p>
     </Container>
   );
 };
