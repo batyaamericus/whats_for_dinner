@@ -8,7 +8,8 @@ async function top10Control (req,res,next) {
          request[i].difference = Math.abs(Number(request[i].dk_persentage) - Number(request[i].our_prediction))
         }
         request.sort((a,b) => b.difference - a.difference )
-        res.send(request)
+        const result = request.slice(0,9)
+        res.send(result)
     }
     catch (err) {
         next(err)
