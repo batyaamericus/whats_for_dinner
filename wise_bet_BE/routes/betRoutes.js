@@ -8,6 +8,6 @@ import verifyToken from "../midlewares/verifyToken.js";
 const router = Router();
 
 router.get('/top10', verifyToken, top10Control)
-router.post('/search/:query', verifyToken, Validation(searchSchema), searchByQuary)
+router.post('/search/:query', Validation(searchSchema), verifyToken, searchByQuary)
 
 export default router
