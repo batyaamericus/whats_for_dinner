@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import AuthContext from "../contexts/AuthContext.js";
+import { signUp } from "../services/services.js";
 
 function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +25,11 @@ function AuthProvider({ children }) {
     clearAlert();
   }
 
-  async function handleSignUp(newUser) {}
+  async function handleSignUp(newUser) {
+    const user = await signUp(newUser);
+    setActiveUser(user);
+    console.log(user);
+  }
 
   return (
     <AuthContext.Provider
@@ -35,6 +41,7 @@ function AuthProvider({ children }) {
         showAlert,
         clearAlert,
         displayAlert,
+        onSignUp: handleSignUp,
       }}
     >
       {children}

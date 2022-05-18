@@ -20,6 +20,7 @@ const Auth = () => {
     isLoading,
     showAlert,
     displayAlert,
+    onSignUp,
   } = useAuth();
 
   function handleLogIn() {
@@ -34,6 +35,7 @@ const Auth = () => {
     if (pwd !== confirmPwd) {
       displayAlert("Password doesn't match", "danger");
     }
+    onSignUp({ name, lastName, pwd, email, confirmPwd });
   }
   return (
     <Container className="mt-5">
