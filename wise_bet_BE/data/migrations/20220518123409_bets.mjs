@@ -1,4 +1,3 @@
-
 export function up(knex) {
     return knex.schema.createTable('bets', function (table) {
       table.uuid('entry_id').primary().defaultTo(knex.raw("(UUID())"));
