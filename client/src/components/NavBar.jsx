@@ -17,15 +17,6 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* {activeUser && ( */}
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5 "
-              to="/profile"
-            >
-              Profile
-            </Link>
-            {/* )} */}
             <Link
               style={{ textDecoration: "none" }}
               className="styleNavLink navProfile px-5"
@@ -40,6 +31,15 @@ const NavBar = () => {
             >
               Search
             </Link>
+            {/* {activeUser && ( */}
+            <Link
+              style={{ textDecoration: "none" }}
+              className="styleNavLink navHome px-5 "
+              to="/profile"
+            >
+              Profile
+            </Link>
+            {/* )} */}
           </Nav>
           <Nav>
             {/*  <Link
