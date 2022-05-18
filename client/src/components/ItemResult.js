@@ -21,7 +21,7 @@ function ItemResult({ result }) {
         <Card.Text
           style={result.dk_persentage - result.our_prediction > 0 ? green : red}
         >
-          {result.difference}
+          {result.difference}%
         </Card.Text>
       </Card.Body>
     </Card>

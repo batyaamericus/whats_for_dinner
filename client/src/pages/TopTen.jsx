@@ -27,7 +27,7 @@ function TopTen() {
       <Row className="mt-3 justify-content-center">
         {results.map((result) => (
           <Col
-            key={result.game_id}
+            key={result.entry_id}
             md={"auto"}
             lg={"auto"}
             style={{ width: "auto" }}
