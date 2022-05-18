@@ -1,6 +1,6 @@
 function doPasswordsMatch(req, res, next) {
     const { password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
+    if (pwd !== confirmPwd) {
 
       res.status(400).send("Passwords do not match")
       return;

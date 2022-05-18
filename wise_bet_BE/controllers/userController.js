@@ -14,12 +14,11 @@ async function logUser(req, res) {
 
 
 async function submitNewUser(req, res){
-    // res.send(req.body);
-    // console.log("Got a create-user request", req.body);
+
     try {
-        const { firstName, lastName, email, password } = req.body;
-    
-        const user = await authModel.RegNewUser({ firstName, lastName, email, password });
+        const { name, lastName, email } = req.body;
+        console.log(name, lastName, email);
+        const user = await authModel.RegNewUser({  name, lastName, email  });
         res.send(email);
     } catch (err) {
         console.log(err);
