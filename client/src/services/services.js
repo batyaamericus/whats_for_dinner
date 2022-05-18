@@ -10,4 +10,9 @@ async function signUp(newUser) {
   return result.data;
 }
 
-export { signUp };
+async function logIn(oldUser) {
+  const result = await api.post("/user/login", oldUser);
+  return result.data;
+}
+
+export { signUp, logIn };

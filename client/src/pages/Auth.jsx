@@ -21,12 +21,14 @@ const Auth = () => {
     showAlert,
     displayAlert,
     onSignUp,
+    onLogIn,
   } = useAuth();
 
   function handleLogIn() {
-    if (!name || !pwd) {
+    if (!email || !pwd) {
       displayAlert("Please, provide all values", "danger");
     }
+    onLogIn({ email, pwd });
   }
   function handleSignUp() {
     if (!name || !lastName || !pwd || !email || !confirmPwd) {

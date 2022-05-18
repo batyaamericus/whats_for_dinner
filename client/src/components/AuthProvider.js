@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthContext from "../contexts/AuthContext.js";
-import { signUp } from "../services/services.js";
+import { logIn, signUp } from "../services/services.js";
 import { useNavigate } from "react-router-dom";
 
 const LSuser = localStorage.getItem("user");
@@ -44,6 +44,22 @@ function AuthProvider({ children }) {
     clearAlert();
   }
 
+  async function handleLogIn(oldUser) {
+    setIsLoading(true);
+    try {
+      const user = await logIn(oldUser);
+      setActiveUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
+      setIsLoading(false);
+      navigate("/");
+    } catch (error) {
+      setShowAlert(true);
+      displayAlert(error.response.data.message, "danger");
+      setIsLoading(false);
+    }
+    clearAlert();
+  }
+
   function handleLogOut() {
     setActiveUser(null);
     localStorage.clear();
@@ -61,6 +77,7 @@ function AuthProvider({ children }) {
         clearAlert,
         displayAlert,
         onSignUp: handleSignUp,
+        onLogIn: handleLogIn,
         onLogOut: handleLogOut,
       }}
     >
