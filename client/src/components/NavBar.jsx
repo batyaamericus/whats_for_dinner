@@ -1,36 +1,63 @@
-import React from 'react'
-import { Container, Nav, NavDropdown } from "react-bootstrap";
+import React from "react";
+import {Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
-    const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
-    return (
-      <Container className="center">
-        <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
-          <Nav.Item>
-            <Nav.Link eventKey="1" href="#/home">
-              Top 10 Bets
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="2" title="Item">
-              NavLink 2 content
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="3" disabled>
-              NavLink 3 content
-            </Nav.Link>
-          </Nav.Item>
-          <NavDropdown title="Dropdown" id="nav-dropdown">
-            <NavDropdown.Item eventKey="4.1">Register</NavDropdown.Item>
-            <NavDropdown.Item eventKey="4.2">Login</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.4">Logout</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Container>
-    );
-}
-  
+  return (
+    <Container className="navCont center">
+      <Navbar className="nav px-2" expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className=" nav2 me-auto">
+          
+         
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5"
+                  to="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/"
+                >
+                  Top 10
+                </Link>
+           
+              <Link
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navProfile px-5"
+                to="/"
+              >
+                Login
+              </Link>
+            
+           
+             {/*  <Link
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navProfile px-5"
+                to="/signin"
+              >
+                Sign in
+              </Link> */}
+            
+           
+              <Link
+                to="/#"
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navHome px-5"
+              
+              >
+                Logout
+              </Link>
+            
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Container>
+  );
+};
 
-export default NavBar
+export default NavBar;
