@@ -17,15 +17,6 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* {activeUser && ( */}
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5 "
-              to="/profile"
-            >
-              Profile
-            </Link>
-            {/* )} */}
             <Link
               style={{ textDecoration: "none" }}
               className="styleNavLink navProfile px-5"
@@ -49,26 +40,36 @@ const NavBar = () => {
             >
               Login
             </Link> */}
-
-            {!activeUser && (
+           
+              {/* {activeUser && ( */}
               <Link
                 style={{ textDecoration: "none" }}
-                className="styleNavLink navProfile px-5"
-                to="/auth"
+                className="styleNavLink navHome px-5 "
+                to="/profile"
               >
-                Authenticate
+                Profile
               </Link>
-            )}
+              {/* )} */}
+              {!activeUser && (
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/auth"
+                >
+                  Authenticate
+                </Link>
+              )}
 
-            {activeUser && (
-              <Link
-                to="/#"
-                style={{ textDecoration: "none" }}
-                className="styleNavLink navHome px-5"
-              >
-                Logout
-              </Link>
-            )}
+              {activeUser && (
+                <Link
+                  to="/#"
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5"
+                >
+                  Logout
+                </Link>
+              )}
+         
           </Nav>
         </Navbar.Collapse>
       </Container>

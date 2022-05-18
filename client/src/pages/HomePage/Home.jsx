@@ -14,7 +14,11 @@ const Home = () => {
           <h1>Here we will have a description</h1>
         </div>
         <div className="center">
-          <Button variant="warning" onClick={() => navigate("/auth")}>
+          <Button
+            variant="warning"
+            className="homeBtn"
+            onClick={() => navigate("/auth")}
+          >
             Authenticate
           </Button>
         </div>

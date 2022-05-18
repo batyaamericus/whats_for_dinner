@@ -1,13 +1,29 @@
 .homeBtn{
-    padding: 2rem;
+   
     margin: 2rem
 }
 
-.welcomeContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 2rem;
+.homeContainer{
+    background-position: center;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaqSQDfIUHc3j1hSNKIEgfLltskdqpaYLMpw&usqp=CAU);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: none;
 }
+
+.welcomeContainer {
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: #212529;
+    color: #ffca2c;
+    border-radius: 10px;}
 

@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/HomePage/Home";
 import Search from "./pages/Search/Search";
 import Profile from "./pages/User/UserProfile/Profile";
+import UserHomePage from "./pages/User/UserHomePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/user" element={<UserHomePage />} />
       </Routes>
     </AuthProvider>
   );
