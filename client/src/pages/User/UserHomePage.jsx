@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "./UserHomePage.css";
 import useAuth from "../../hooks/useAuth.js";
 import { useNavigate } from "react-router-dom";
 
 const UserHomePage = () => {
-  const {
-    activeUser,
-    isLoading,
-    showAlert,
-
-    displayAlert,
-    } = useAuth();
-    console.log(activeUser);
+  const { activeUser, isLoading, showAlert, displayAlert } = useAuth();
 
   const [showUser, setShowUser] = useState();
   const navigate = useNavigate();

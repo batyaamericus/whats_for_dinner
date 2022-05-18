@@ -13,16 +13,7 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
-  const {
-    alertText,
-    alertType,
-    activeUser,
-    isLoading,
-    showAlert,
-    displayAlert,
-    onSignUp,
-    onLogIn,
-  } = useAuth();
+  const { isLoading, showAlert, displayAlert, onSignUp, onLogIn } = useAuth();
 
   function handleLogIn() {
     if (!email || !pwd) {
