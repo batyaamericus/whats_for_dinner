@@ -22,7 +22,19 @@ const Auth = () => {
     displayAlert,
   } = useAuth();
 
-  function handleLogIn() {}
+  function handleLogIn() {
+    if (!name || !pwd) {
+      displayAlert("Please, provide all values", "danger");
+    }
+  }
+  function handleSignUp() {
+    if (!name || !lastName || !pwd || !email || !confirmPwd) {
+      displayAlert("Please, provide all values", "danger");
+    }
+    if (pwd !== confirmPwd) {
+      displayAlert("Password doesn't match", "danger");
+    }
+  }
   return (
     <Container className="mt-5">
       <h2 className="display-3">{isMember ? "LogIn" : "Register"}</h2>
@@ -50,7 +62,7 @@ const Auth = () => {
       <div className="d-flex justify-content-end">
         <Button
           variant="warning"
-          // onClick={isMember ? handleLogIn : handleSignUp}
+          onClick={isMember ? handleLogIn : handleSignUp}
           disabled={isLoading}
         >
           {isMember ? "Log In" : "Register"}
@@ -67,8 +79,8 @@ const Auth = () => {
             </>
           )}
         </Button>
-        {showAlert && <Alert />}
       </div>
+      {showAlert && <Alert />}
       <p className="c-modal-toggle">
         {isMember ? (
           <>

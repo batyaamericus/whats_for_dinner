@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 
 function Alert() {
   const { alertType, alertText } = useAuth();
-  return <div className={`alert alert-${alertType}`}>{alertText}</div>;
+  return <div className={`alert alert-${alertType} mt-3`}>{alertText}</div>;
 }
 
 export default Alert;
