@@ -13,8 +13,6 @@ function Registration({
   setPwd,
   confirmPwd,
   setConfirmPwd,
-  phoneNumber,
-  setPhoneNumber,
 }) {
   return (
     <>
@@ -45,14 +43,6 @@ function Registration({
           value={confirmPwd}
           onChange={setConfirmPwd}
           type="password"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-        <Form.Label>Phone Number</Form.Label>
-        <Form.Control
-          value={phoneNumber}
-          onChange={setPhoneNumber}
-          type="string"
         />
       </Form.Group>
     </>
