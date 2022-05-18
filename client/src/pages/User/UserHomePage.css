@@ -1,14 +1,15 @@
 .user-homepage__container {
    
-    background-position: center;
-   
-    height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 5rem;
+        padding: 2rem;
+        /* background-color: #6c6f72; */
+        /* color: #ffca2c; */
+        border-radius: 10px;
 }
 
 .user-homepage__content {
@@ -19,9 +20,7 @@
     text-align: center;
     margin: 2rem;
     padding: 2rem;
-    background-color: #212529;
-    color: #ffca2c;
-    border-radius: 10px;
+    border-bottom: 3px solid #ffca2c;
 }
 
 .userPageBtn {

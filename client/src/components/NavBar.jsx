@@ -31,15 +31,7 @@ const NavBar = () => {
             >
               Search
             </Link>
-            {/* {activeUser && ( */}
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5 "
-              to="/profile"
-            >
-              Profile
-            </Link>
-            {/* )} */}
+           
           </Nav>
           <Nav>
             {/*  <Link

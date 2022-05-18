@@ -11,7 +11,7 @@ const Home = () => {
     <Container className="homeContainer">
       <div className="welcomeContainer">
         <div className="center">
-          <h1>Here we will have a description</h1>
+          <h1>Where all your dreams become more accurate.</h1>
         </div>
         <div className="center">
           <Button
