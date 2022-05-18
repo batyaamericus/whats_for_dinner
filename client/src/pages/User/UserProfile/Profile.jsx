@@ -1,13 +1,10 @@
-import React, {useState} from 'react'
-import "./Profile.css"
+import React, { useState } from "react";
+import "./Profile.css";
 import useAuth from "../../../hooks/useAuth";
-import { Button, Container, Form, Spinner } from 'react-bootstrap';
-import Alerts from "../../../components/Registration/Alerts";
-
+import { Button, Container, Form, Spinner } from "react-bootstrap";
 
 const Profile = (props) => {
   const {
-   
     activeUser,
     isLoading,
     showAlert,
@@ -43,8 +40,9 @@ const Profile = (props) => {
       displayAlert();
       return;
     }
-/*     onUpdate(valuesToUpdate);
- */  }
+    /*     onUpdate(valuesToUpdate);
+     */
+  }
 
   return (
     <Container className="mt-4 p-profile">
@@ -95,10 +93,10 @@ const Profile = (props) => {
             type="number"
           />
         </Form.Group>
-       
+
         <div className="btn-container">
           <Button
-            variant="primary"
+            variant="warning"
             type="submit"
             disabled={isLoading}
             className="mb-3"
@@ -121,9 +119,9 @@ const Profile = (props) => {
           </Button>
         </div>
       </Form>
-    {  showAlert && <Alerts/>}
+      {/*   {  showAlert && <Alerts/>} */}
     </Container>
   );
 };
 
-export default Profile
+export default Profile;
