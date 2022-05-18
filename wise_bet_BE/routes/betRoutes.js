@@ -1,10 +1,10 @@
 import { Router } from "express";
-import {top10Control} from '../controllers/betController.js'
+import {top10Control, searchByQuary} from '../controllers/betController.js'
 
 
 const router = Router();
 
 router.get('/top10', top10Control)
-router.post('/search',)
+router.post('/search/:query', searchByQuary)
 
 export default router
