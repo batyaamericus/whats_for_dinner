@@ -23,6 +23,8 @@ function AuthProvider({ children }) {
     clearAlert();
   }
 
+  async function handleSignUp(newUser) {}
+
   return (
     <AuthContext.Provider
       value={{
