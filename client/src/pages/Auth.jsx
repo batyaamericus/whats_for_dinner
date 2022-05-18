@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Button, Container } from "react-bootstrap";
 import Login from "../components/Login";
 import Registration from "../components/Registration/Registration";
+import useAuth from "../hooks/useAuth.js";
+import Alert from "../components/Alerts";
 
 const Auth = () => {
   const [isMember, setIsMember] = useState(true);
@@ -10,6 +13,16 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
+  const {
+    alertText,
+    alertType,
+    activeUser,
+    isLoading,
+    showAlert,
+    displayAlert,
+  } = useAuth();
+
+  function handleLogIn() {}
   return (
     <Container className="mt-5">
       <h2 className="display-3">{isMember ? "LogIn" : "Register"}</h2>
@@ -38,22 +51,23 @@ const Auth = () => {
         <Button
           variant="warning"
           // onClick={isMember ? handleLogIn : handleSignUp}
-          // disabled={isAuthLoading}
+          disabled={isLoading}
         >
           {isMember ? "Log In" : "Register"}
-          {/* {isAuthLoading && (
-              <>
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-                <span className="visually-hidden">Loading...</span>
-              </>
-            )} */}
+          {isLoading && (
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <span className="visually-hidden">Loading...</span>
+            </>
+          )}
         </Button>
+        {showAlert && <Alert />}
       </div>
       <p className="c-modal-toggle">
         {isMember ? (
