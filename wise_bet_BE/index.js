@@ -29,4 +29,4 @@ dbConnection
 app.use("/user", userRoute)
 app.use('/', betRoutes)
 
-
+export {dbConnection}
