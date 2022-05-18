@@ -1,23 +1,28 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const { activeUser, onLogout } = useAuth();
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Wise Bet</Navbar.Brand>
+        <Navbar.Brand href="/">Wise Bet</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5 "
-              to="/"
-            >
-              Home
-            </Link>
+            {activeUser && (
+              <Link
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navHome px-5 "
+                to="/"
+              >
+                Profile
+              </Link>
+            )}
             <Link
               style={{ textDecoration: "none" }}
               className="styleNavLink navProfile px-5"
@@ -27,7 +32,7 @@ const NavBar = () => {
             </Link>
           </Nav>
           <Nav>
-           {/*  <Link
+            {/*  <Link
               style={{ textDecoration: "none" }}
               className="styleNavLink navProfile px-5 "
               to="/auth"
@@ -35,21 +40,25 @@ const NavBar = () => {
               Login
             </Link> */}
 
-            {/*  <Link
+            {!activeUser && (
+              <Link
                 style={{ textDecoration: "none" }}
                 className="styleNavLink navProfile px-5"
-                to="/signin"
+                to="/auth"
               >
-                Sign in
-              </Link> */}
+                Authenticate
+              </Link>
+            )}
 
-            <Link
-              to="/#"
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5"
-            >
-              Logout
-            </Link>
+            {activeUser && (
+              <Link
+                to="/#"
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navHome px-5"
+              >
+                Logout
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
