@@ -11,25 +11,34 @@ const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand className="wiseLogo"onClick={() => navigate("/")}>Wise Bet</Navbar.Brand>
+        <Navbar.Brand className="wiseLogo" onClick={() => navigate("/")}>
+          Wise Bet
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {activeUser && (
-              <Link
-                style={{ textDecoration: "none" }}
-                className="styleNavLink navHome px-5 "
-                to="/"
-              >
-                Profile
-              </Link>
-            )}
+            {/* {activeUser && ( */}
+            <Link
+              style={{ textDecoration: "none" }}
+              className="styleNavLink navHome px-5 "
+              to="/profile"
+            >
+              Profile
+            </Link>
+            {/* )} */}
             <Link
               style={{ textDecoration: "none" }}
               className="styleNavLink navProfile px-5"
               to="/"
             >
               Top 10
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              className="styleNavLink navProfile px-5"
+              to="/search"
+            >
+              Search
             </Link>
           </Nav>
           <Nav>
