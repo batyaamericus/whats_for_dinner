@@ -1,5 +1,9 @@
 __pycache__/
+<<<<<<< HEAD
 .ipynb_checkpoints/
+=======
+git.ipynb_checkpoints/
+>>>>>>> 6729476fabfe55e237d00949f63ce33ad9a8ec10
 
 # dependencies
 node_modules/
