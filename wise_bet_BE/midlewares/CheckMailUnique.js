@@ -6,7 +6,7 @@ async function checkMailUnique(req, res, next) {
     if(email){
     try {
         const user = await authModel.logIn(email);
-        console.log(user + " existing")
+        console.log(user + " mail exists")
         if (user.length === 0) {
             next();
         } else {
