@@ -15,8 +15,8 @@ function Validation(schema){
         console.log("Validated text")
         next(); 
     } else {
-        console.log(validate.errors);
-        res.status(400).send(validate.errors[0]);
+        console.log(validate.errors[0]);
+        res.status(400).send(`${validate.errors[0].instancePath} ${validate.errors[0].message}`);
     }
   }
 }
