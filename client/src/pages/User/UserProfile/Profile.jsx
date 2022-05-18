@@ -15,7 +15,6 @@ const Profile = (props) => {
   const [lastName, setLastName] = useState(activeUser?.lastName);
   const [pwd, setPwd] = useState(activeUser?.pwd);
   const [email, setEmail] = useState(activeUser?.email);
-  const [phoneNumber, setPhoneNumber] = useState(activeUser?.phoneNumber);
 
   let valuesToUpdate = {};
   if (pwd !== "") {
@@ -24,19 +23,17 @@ const Profile = (props) => {
       lastName,
       pwd,
       email,
-      phoneNumber,
     };
   } else {
     valuesToUpdate = {
       name,
       lastName,
       email,
-      phoneNumber,
     };
   }
   function handleUpdate(e) {
     e.preventDefault();
-    if (!name || !lastName || !email || !phoneNumber) {
+    if (!name || !lastName || !email) {
       displayAlert();
       return;
     }
@@ -83,14 +80,6 @@ const Profile = (props) => {
             value={pwd}
             onChange={(e) => setPwd(e.target.value)}
             type="password"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            type="number"
           />
         </Form.Group>
 
