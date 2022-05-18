@@ -1,8 +1,8 @@
 import authModel from "../models/userModel.js"
 
-async function CheckMailUnique(req, res, next) {
+async function checkMailUnique(req, res, next) {
   console.log('checking mail is unique')
-  const { email, pwd } = req.body;
+  const { email } = req.body;
     if(email){
     try {
         const user = await authModel.logIn(email);
@@ -17,6 +17,6 @@ async function CheckMailUnique(req, res, next) {
         res.status(401).send("error");
       }
     } else {next();}
-  }
+}
 
-export default CheckMailUnique;
+export default checkMailUnique;
