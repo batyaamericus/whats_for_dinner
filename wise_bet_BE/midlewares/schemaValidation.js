@@ -4,7 +4,7 @@ import addFormat from "ajv-formats";
 const ajv = new Ajv({$data: true});
 addFormat(ajv);
 
-function Validation(schema){
+function validation(schema){
   
   return (req, res, next)=> {
     console.log("validating data",req.body);
@@ -15,10 +15,10 @@ function Validation(schema){
         console.log("Validated text")
         next(); 
     } else {
-        console.log(validate.errors);
-        res.status(400).send(validate.errors[0]);
+        console.log(validate.errors[0]);
+        res.status(400).send(`${validate.errors[0].instancePath} ${validate.errors[0].message}`);
     }
   }
 }
 
-export default Validation;
+export default validation;

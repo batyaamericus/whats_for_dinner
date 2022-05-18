@@ -5,6 +5,7 @@ function doPasswordsMatch(req, res, next) {
       res.status(400).send("Passwords do not match")
       return;
     }
+    delete req.body.confirmPwd
     next();
   }
 
