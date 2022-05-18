@@ -67,7 +67,6 @@ function AuthProvider({ children }) {
       setActiveUser(user);
       localStorage.setItem("user", JSON.stringify(user));
       setIsLoading(false);
-      navigate("/user");
     } catch (error) {
       setShowAlert(true);
       displayAlert(error.response.data, "danger");
