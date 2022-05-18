@@ -16,10 +16,10 @@ async function logUser(req, res) {
 async function submitNewUser(req, res){
 
     try {
-        const { name, lastName, email } = req.body;
-        console.log(name, lastName, email);
-        const user = await authModel.RegNewUser({  name, lastName, email  });
-        res.send(email);
+        const { name, lastName, email, pwd } = req.body;
+        console.log("inserting to db: " , name, lastName, email, pwd);
+        const {user_id} = await authModel.RegNewUser({  name, lastName, email, pwd  });
+        res.send({user_id, name, lastName, email});
     } catch (err) {
         console.log(err);
         res.status(500).send(err);

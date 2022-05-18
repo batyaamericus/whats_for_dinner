@@ -6,7 +6,6 @@ export function up(knex) {
       table.string('lastName').notNull();
       table.string('email');
       table.string('pwd').notNull();
-      table.string('confirmPwd').notNull();
     });
   }
   export function down(knex) {
