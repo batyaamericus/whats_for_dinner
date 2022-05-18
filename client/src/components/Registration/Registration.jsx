@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import "./Register.css";
+import "./Registration.css";
 
 function Registration({
   name,
