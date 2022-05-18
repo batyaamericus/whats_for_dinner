@@ -17,20 +17,33 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navProfile px-5"
-              to="/"
-            >
-              Top 10
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navProfile px-5"
-              to="/search"
-            >
-              Search
-            </Link>
+            {activeUser && (
+              <>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/user"
+                >
+                  My Page
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/"
+                >
+                  Top 10
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/search"
+                >
+                  Search
+                </Link>
+              </>
+            )}
           </Nav>
           <Nav>
             {/*  <Link
@@ -42,13 +55,7 @@ const NavBar = () => {
             </Link> */}
 
             {/* {activeUser && ( */}
-            <Link
-              style={{ textDecoration: "none" }}
-              className="styleNavLink navHome px-5 "
-              to="/profile"
-            >
-              Profile
-            </Link>
+
             {/* )} */}
             {!activeUser && (
               <Link
@@ -59,16 +66,24 @@ const NavBar = () => {
                 Authenticate
               </Link>
             )}
-
             {activeUser && (
-              <Link
-                to="/"
-                style={{ textDecoration: "none" }}
-                className="styleNavLink navHome px-5"
-                onClick={() => onLogOut()}
-              >
-                Logout
-              </Link>
+              <>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5 "
+                  to="/profile"
+                >
+                  Profile
+                </Link>
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5"
+                  onClick={() => onLogOut()}
+                >
+                  Logout
+                </Link>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>
