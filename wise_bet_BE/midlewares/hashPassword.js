@@ -2,13 +2,13 @@ import bcrypt from 'bcrypt';
 
 function hashPassword(req, res, next) {
   const saltRounds = 10;
-  if(req.body.password){
-    console.log(req.body.password)
-    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+  if(req.body.pwd){
+    console.log(req.body.pwd)
+    bcrypt.hash(req.body.pwd, saltRounds, (err, hash) => {
       if (err) {
         next(err);
       }
-      req.body.password = hash;
+      req.body.pwd = hash;
       console.log(hash)
       next();
     });

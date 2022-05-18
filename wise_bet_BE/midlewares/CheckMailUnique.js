@@ -2,7 +2,7 @@ import authModel from "../models/userModel.js"
 
 async function CheckMail(req, res, next) {
   console.log('checking mail')
-  const { email, password } = req.body;
+  const { email, pwd } = req.body;
     if(email){
     try {
         const user = await authModel.logIn(email);
