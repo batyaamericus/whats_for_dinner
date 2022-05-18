@@ -4,9 +4,9 @@ export async function up(knex) {
                                  dk_persentage: 64,
                                  our_prediction: 70},
                                  {teamName: 'Beta Team',
-                                 dk_oddss: +155,
+                                 dk_odds: +155,
                                  dk_persentage: 40,
-                                 our_predictionn: 34},
+                                 our_prediction: 34},
                                  {
                                  teamName: 'Gamma Team',
                                  dk_odds: -170,
