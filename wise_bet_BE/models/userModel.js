@@ -12,10 +12,12 @@ async function logIn(email) {
   }
 
   async function RegNewUser(newUser) {
-    console.log(newUser);
+    console.log("enter user to db: ");
     try {
       const queryResult = await dbConnection.from("users").insert(newUser);
-      return queryResult;
+      const user_id = await dbConnection.from("users").select('user_id').where({ email: newUser.email });
+      console.log("user_id:", user_id);
+      return user_id[0];
     } catch (err) {
       console.log(err);
     }

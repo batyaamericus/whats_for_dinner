@@ -1,12 +1,12 @@
 import authModel from "../models/userModel.js"
 
-async function CheckMail(req, res, next) {
-  console.log('checking mail')
+async function CheckMailUnique(req, res, next) {
+  console.log('checking mail is unique')
   const { email, pwd } = req.body;
     if(email){
     try {
         const user = await authModel.logIn(email);
-        console.log(user)
+        console.log(user + " existing")
         if (user.length === 0) {
             next();
         } else {
@@ -20,4 +20,4 @@ async function CheckMail(req, res, next) {
     } else {next();}
   }
 
-export default CheckMail;
+export default CheckMailUnique;
