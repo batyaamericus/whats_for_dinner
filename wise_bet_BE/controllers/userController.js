@@ -30,11 +30,8 @@ async function updateUserData(req, res){
     try{
     console.log("inside update user data: ")
     const { user_id, name, lastName, email } = req.body;
-    //const userId = req.body.user_id;
     const change = req.body;
-    //console.log(userId, change);
     const result = await authModel.updateUser(user_id, change);
-    //console.log(result);
     res.status(200).send({user_id, name, lastName, email});
     } catch(err){
         res.status(500).send(err);
