@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 __pycache__/
 .ipynb_checkpoints/
-=======
 
 # dependencies
 node_modules/
@@ -24,4 +22,3 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
->>>>>>> c8c822dae99beae8a543410379b2e07aabb9423b
