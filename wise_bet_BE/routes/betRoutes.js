@@ -3,6 +3,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.post('/test', )
+router.get('/top10', )
+router.post('/search',)
 
 export default router

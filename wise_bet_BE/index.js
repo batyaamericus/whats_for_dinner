@@ -14,7 +14,7 @@ app.use(cors({ origin: ["*"], credentials: true }))
 app.use(express.json())
 app.use(cookieParser());
 
-app.disable('etag');
+//app.disable('etag');
 dbConnection
 .migrate
 .latest()
