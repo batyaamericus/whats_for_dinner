@@ -5,7 +5,7 @@ async function top10Control (req,res) {
     try {
         const request = await top10()
         for (let i=0; i < request.length; i++) {
-        request[i].difference = Math.abs(Number(request[i].dk_persentage) - Number(request[i].our_prediction))
+        request[i].difference = Math.abs(Number(request[i].dk_persentage) / Number(request[i].our_prediction))
         }
         request.sort((a,b) => b.difference - a.difference)
         const result = request.slice(0,9)

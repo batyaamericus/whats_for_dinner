@@ -6,7 +6,7 @@ async function top10 () {
 }
 
 async function byTeamName (value) {
-    const QueryResult = await dbConnection.from('bets').select('dk_persentage', 'our_prediction', 'teamName', 'game_id').where({teamName: value})
+    const QueryResult = await dbConnection.from('bets').select('dk_persentage', 'our_prediction', 'teamName', 'game_id').where('teamName', 'like', `%${value}%`)
     return QueryResult
 }
 
