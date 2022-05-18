@@ -3,8 +3,9 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.css";
 import AuthProvider from "./components/AuthProvider";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
+import Home from "./pages/HomePage/Home";
 
 function App() {
   return (
