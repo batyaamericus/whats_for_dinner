@@ -10,6 +10,7 @@ import Search from "./pages/Search/Search";
 import Profile from "./pages/User/UserProfile/Profile";
 import UserHomePage from "./pages/User/UserHomePage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js";
+import TopTen from "./pages/TopTen";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Search />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/topten"
+          element={
+            <ProtectedRoute>
+              <TopTen />
             </ProtectedRoute>
           }
         />
