@@ -81,11 +81,11 @@ const Auth = () => {
         </Button>
       </div>
       {showAlert && <Alert />}
-      <p className="c-modal-toggle">
+      <p className="c-modal-toggle center">
         {isMember ? (
           <>
             Are you not registered?{" "}
-            <Button variant="link" onClick={() => setIsMember(false)}>
+            <Button variant="warning" onClick={() => setIsMember(false)}>
               {" "}
               Register here{" "}
             </Button>{" "}
@@ -93,7 +93,7 @@ const Auth = () => {
         ) : (
           <>
             Are you registered?{" "}
-            <Button variant="link" onClick={() => setIsMember(true)}>
+            <Button variant="warning" onClick={() => setIsMember(true)}>
               {" "}
               Log In here{" "}
             </Button>{" "}
