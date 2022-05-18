@@ -15,4 +15,14 @@ async function logIn(oldUser) {
   return result.data;
 }
 
-export { signUp, logIn };
+async function updateUser(user) {
+  const result = await api.put("/user/update", user);
+  return result.data;
+}
+
+async function getTopTenResults() {
+  const result = await api.get("/top10");
+  return result.data;
+}
+
+export { signUp, logIn, updateUser, getTopTenResults };

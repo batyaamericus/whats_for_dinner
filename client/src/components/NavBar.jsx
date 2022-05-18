@@ -30,7 +30,7 @@ const NavBar = () => {
                 <Link
                   style={{ textDecoration: "none" }}
                   className="styleNavLink navProfile px-5"
-                  to="/"
+                  to="/topten"
                 >
                   Top 10
                 </Link>
