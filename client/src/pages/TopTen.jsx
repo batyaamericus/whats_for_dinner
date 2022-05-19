@@ -5,6 +5,8 @@ import { Row } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import ItemResult from "../components/ItemResult.js";
 import { getTopTenResults } from "../services/services.js";
+import Loader2 from "../images/Loader2.gif"
+import "./TopTen.css";
 
 function TopTen() {
   const [results, setResults] = useState([]);
@@ -12,10 +14,15 @@ function TopTen() {
 
   async function getResults() {
     try {
+      setIsLoading(true);
       const res = await getTopTenResults();
       console.log(res);
       setResults(res);
-    } catch (error) {}
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -24,6 +31,11 @@ function TopTen() {
 
   return (
     <Container>
+      {isLoading && (
+        <div className="loaderCont">
+          <img className="loader2" src={Loader2} alt="" />
+        </div>
+      )}
       <Row className="mt-3 justify-content-center">
         {results.map((result) => (
           <Col
