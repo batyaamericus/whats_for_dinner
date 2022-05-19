@@ -1,4 +1,34 @@
 __pycache__/
+<<<<<<< HEAD
 
 
 node_modules/
+=======
+<<<<<<< HEAD
+.ipynb_checkpoints/
+=======
+git.ipynb_checkpoints/
+>>>>>>> 6729476fabfe55e237d00949f63ce33ad9a8ec10
+
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> 0f93a38e6d660c618859fc54d314f732d11ae65d
