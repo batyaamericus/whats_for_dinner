@@ -26,7 +26,7 @@ async function getTopTenResults() {
 }
 
 async function searchResults(value) {
-  const result = await api.post(`/search/name`, { value: value });
+  const result = await api.get(`/search/`, { params: { name: value } });
   return result.data;
 }
 
