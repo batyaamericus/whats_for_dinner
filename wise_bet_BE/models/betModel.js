@@ -17,7 +17,13 @@ async function byTeamName(query) {
   const { name } = query;
   const QueryResult = await dbConnection
     .from("bets")
-    .select("dk_persentage", "our_prediction", "teamName", "game_id")
+    .select(
+      // "entry_id",
+      "dk_persentage",
+      "our_prediction",
+      "teamName",
+      "game_id"
+    )
     .where("teamName", "like", `%${name}%`)
     .limit(20);
   return QueryResult;

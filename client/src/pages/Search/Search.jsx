@@ -10,7 +10,7 @@ import {
 import ItemResult from "../../components/ItemResult";
 import { searchResults } from "../../services/services.js";
 
-function Search(props) {
+function Search() {
   const [results, setResults] = useState([]);
   const [value, setValue] = useState("");
 
@@ -39,14 +39,14 @@ function Search(props) {
           Search
         </Button>
       </Form>
-      {/* <Row className="mt-3 justify-content-center">
+      <Row className="mt-3 justify-content-center">
         {results.length > 0 &&
-          results.map((result) => (
-            <Col key={result} md={"auto"} lg={"auto"} style={{ width: "auto" }}>
+          results.map((result, index) => (
+            <Col key={index} md={"auto"} lg={"auto"} style={{ width: "auto" }}>
               <ItemResult result={result} />
             </Col>
           ))}
-      </Row> */}
+      </Row>
     </Container>
   );
 }
