@@ -17,6 +17,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Search.css";
 import dateFormat from "../../services/functions.js";
+import Sorry from "../../images/Sorry.gif";
 
 function Search() {
   const [results, setResults] = useState(0);
@@ -103,7 +104,16 @@ function Search() {
               <ItemResult result={result} />
             </Col>
           ))}
-        {results.length === 0 && <h3>No Game :(</h3>}
+        {results.length === 0 && (
+          <>
+            <Container>
+              <div className="loaderCont2">
+                <img className="Sorry" src={Sorry} alt="" />
+                <h2>No Game today sorry</h2>
+              </div>
+            </Container>
+          </>
+        )}
       </Row>
     </Container>
   );

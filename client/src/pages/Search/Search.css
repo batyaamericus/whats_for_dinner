@@ -27,3 +27,19 @@
 .datePicker input {
   height: 100%;
 }
+
+.loaderCont2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.Sorry {
+    padding: 1rem;
+    border-radius: 50%;
+    max-width: 350px;
+    max-height: 350px;
+}
