@@ -1,36 +1,95 @@
-import React from 'react'
-import { Container, Nav, NavDropdown } from "react-bootstrap";
+import React from "react";
+import { Navbar, Container, Nav, NavDropdown, Stack } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import "./NavBar.css";
 
 const NavBar = () => {
-    const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
-    return (
-      <Container className="center">
-        <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
-          <Nav.Item>
-            <Nav.Link eventKey="1" href="#/home">
-              Top 10 Bets
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="2" title="Item">
-              NavLink 2 content
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="3" disabled>
-              NavLink 3 content
-            </Nav.Link>
-          </Nav.Item>
-          <NavDropdown title="Dropdown" id="nav-dropdown">
-            <NavDropdown.Item eventKey="4.1">Register</NavDropdown.Item>
-            <NavDropdown.Item eventKey="4.2">Login</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.4">Logout</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Container>
-    );
-}
-  
+  const { activeUser, onLogOut } = useAuth();
+  const navigate = useNavigate();
 
-export default NavBar
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand className="wiseLogo" onClick={() => navigate("/")}>
+          Wise Bet
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            {activeUser && (
+              <>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/user"
+                >
+                  My Page
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/topten"
+                >
+                  Top 10
+                </Link>
+
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navProfile px-5"
+                  to="/search"
+                >
+                  Search
+                </Link>
+              </>
+            )}
+          </Nav>
+          <Nav>
+            {/*  <Link
+              style={{ textDecoration: "none" }}
+              className="styleNavLink navProfile px-5 "
+              to="/auth"
+            >
+              Login
+            </Link> */}
+
+            {/* {activeUser && ( */}
+
+            {/* )} */}
+            {!activeUser && (
+              <Link
+                style={{ textDecoration: "none" }}
+                className="styleNavLink navProfile px-5"
+                to="/auth"
+              >
+                Authenticate
+              </Link>
+            )}
+            {activeUser && (
+              <>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5 "
+                  to="/profile"
+                >
+                  Profile
+                </Link>
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none" }}
+                  className="styleNavLink navHome px-5"
+                  onClick={() => onLogOut()}
+                >
+                  Logout
+                </Link>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default NavBar;
