@@ -109,7 +109,9 @@ function Search() {
             <Container>
               <div className="loaderCont2">
                 <img className="Sorry" src={Sorry} alt="" />
-                <h2>No Game today sorry</h2>
+                <h2 style={{ borderBottom: "5px solid #ffca2c" }}>
+                  No Results Found
+                </h2>
               </div>
             </Container>
           </>
