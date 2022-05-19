@@ -13,19 +13,13 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
-  const {
-    alertText,
-    alertType,
-    activeUser,
-    isLoading,
-    showAlert,
-    displayAlert,
-  } = useAuth();
+  const { isLoading, showAlert, displayAlert, onSignUp, onLogIn } = useAuth();
 
   function handleLogIn() {
-    if (!name || !pwd) {
+    if (!email || !pwd) {
       displayAlert("Please, provide all values", "danger");
     }
+    onLogIn({ email, pwd });
   }
   function handleSignUp() {
     if (!name || !lastName || !pwd || !email || !confirmPwd) {
@@ -34,10 +28,30 @@ const Auth = () => {
     if (pwd !== confirmPwd) {
       displayAlert("Password doesn't match", "danger");
     }
+    onSignUp({ name, lastName, pwd, email, confirmPwd });
   }
   return (
     <Container className="mt-5">
       <h2 className="display-3">{isMember ? "LogIn" : "Register"}</h2>
+      <p className="c-modal-toggle center">
+        {isMember ? (
+          <>
+            Are you not registered?{" "}
+            <Button variant="warning" onClick={() => setIsMember(false)}>
+              {" "}
+              Register here{" "}
+            </Button>{" "}
+          </>
+        ) : (
+          <>
+            Are you registered?{" "}
+            <Button variant="warning" onClick={() => setIsMember(true)}>
+              {" "}
+              Log In here{" "}
+            </Button>{" "}
+          </>
+        )}
+      </p>
       {isMember ? (
         <Login
           email={email}
@@ -59,7 +73,7 @@ const Auth = () => {
           setConfirmPwd={(e) => setConfirmPwd(e.target.value)}
         />
       )}
-      <div className="d-flex justify-content-end">
+      <div className="d-flex center">
         <Button
           variant="warning"
           onClick={isMember ? handleLogIn : handleSignUp}
@@ -81,25 +95,6 @@ const Auth = () => {
         </Button>
       </div>
       {showAlert && <Alert />}
-      <p className="c-modal-toggle">
-        {isMember ? (
-          <>
-            Are you not registered?{" "}
-            <Button variant="link" onClick={() => setIsMember(false)}>
-              {" "}
-              Register here{" "}
-            </Button>{" "}
-          </>
-        ) : (
-          <>
-            Are you registered?{" "}
-            <Button variant="link" onClick={() => setIsMember(true)}>
-              {" "}
-              Log In here{" "}
-            </Button>{" "}
-          </>
-        )}
-      </p>
     </Container>
   );
 };
