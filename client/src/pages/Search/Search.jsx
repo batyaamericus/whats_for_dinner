@@ -9,18 +9,22 @@ import {
 } from "react-bootstrap";
 import ItemResult from "../../components/ItemResult";
 import { searchResults } from "../../services/services.js";
+import Loader from "../../images/Loader.gif";
 
 function Search() {
   const [results, setResults] = useState([]);
   const [value, setValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSearchResults() {
     try {
+      setIsLoading(true);
       const req = await searchResults(value);
-      console.log(req);
       setResults(req);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
+      setIsLoading(false);
     }
   }
   return (
@@ -39,6 +43,12 @@ function Search() {
           Search
         </Button>
       </Form>
+      <img src={Loader} alt="" />
+      <p>
+        <a href="https://giphy.com/stickers/wellsfargo-JSpRuzrFfFUBhFdCs8">
+          via GIPHY
+        </a>
+      </p>
       <Row className="mt-3 justify-content-center">
         {results.length > 0 &&
           results.map((result, index) => (
