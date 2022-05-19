@@ -14,9 +14,10 @@ function Search(props) {
   const [results, setResults] = useState([]);
   const [value, setValue] = useState("");
 
-  async function handleSearchResults(value) {
+  async function handleSearchResults() {
     try {
       const req = await searchResults(value);
+      console.log(req);
       setResults(req);
     } catch (err) {
       console.log(err);
@@ -34,21 +35,18 @@ function Search(props) {
           className="me-2"
           aria-label="Search"
         />
-        <Button
-          onClick={() => handleSearchResults(value)}
-          variant="outline-warning"
-        >
+        <Button onClick={handleSearchResults} variant="outline-warning">
           Search
         </Button>
       </Form>
-      <Row className="mt-3 justify-content-center">
+      {/* <Row className="mt-3 justify-content-center">
         {results.length > 0 &&
           results.map((result) => (
             <Col key={result} md={"auto"} lg={"auto"} style={{ width: "auto" }}>
               <ItemResult result={result} />
             </Col>
           ))}
-      </Row>
+      </Row> */}
     </Container>
   );
 }
