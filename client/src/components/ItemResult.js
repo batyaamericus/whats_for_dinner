@@ -1,5 +1,6 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+import "./ItemResult.css";
 
 function ItemResult({ result }) {
   const green = {
@@ -30,6 +31,16 @@ function ItemResult({ result }) {
           Difference: {result.difference}%
         </Card.Text>
       </Card.Body>
+      <Card.Footer className="btnCont">
+        <Button
+          className="itemBtn"
+          variant="warning"
+          href={`https://www.draftkings.com/?wpsrc=Organic%20Search&wpaffn=Google&wpkw=https%3A%2F%2Fwww.draftkings.com%2F`}
+          target="_blank"
+        >
+          Let's beat the odds
+        </Button>
+      </Card.Footer>
     </Card>
   );
 }
