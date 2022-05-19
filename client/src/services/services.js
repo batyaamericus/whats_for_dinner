@@ -25,8 +25,8 @@ async function getTopTenResults() {
   return result.data;
 }
 
-async function searchResults(value) {
-  const result = await api.get(`/search/`, { params: { name: value } });
+async function searchResults(query) {
+  const result = await api.get(`/search/`, { params: query });
   return result.data;
 }
 
