@@ -5,25 +5,35 @@ import config
 from tqdm.auto import tqdm
 
 
-df = pd.read_csv('nba_elo.csv')
-as_datetime = pd.to_datetime(df['date'])
-date_bound = pd.Timestamp('2010-01-01 00:00:00')
-df.loc[:, 'date_as_dt'] = as_datetime
-df.drop('date', axis=1)
-df = df[df['date_as_dt'] > date_bound]
-df = df.reset_index().drop('index', axis=1)
+df = pd.read_csv('x_test_preds.csv')
 
 engine = create_engine(config.engine_url, future=True)
-cols = ['team1', 'team2', 'date']
+cols = ['uid', 'team1', 'team2', 'date_as_dt']
 
 with engine.connect() as conn:
+    counter = 0
     for i in tqdm(range(df.shape[0])):
-        game_id = ''.join([df.loc[i, col] for col in cols])
+        game_id = df.loc[i, 'uid']
         team_1 = df.loc[i, 'team1']
         team_2 = df.loc[i, 'team2']
-        date = df.loc[i, 'date']
+        date = df.loc[i, 'date_as_dt']
 
         stmt = f'''INSERT INTO games (game_id, team_1, team_2, date) VALUES ('{game_id}', '{team_1}', '{team_2}', '{date}')'''
         print(stmt)
         conn.execute(text(stmt))
-        conn.commit()
+        counter += 1
+        if counter >= 100:
+            conn.commit()
+            counter = 0
+    conn.commit()
+
+
+# def delete():
+#     with engine.connect() as conn:
+#         stmt = f'''DELETE FROM games)'''
+#         print(stmt)
+#         conn.execute(text(stmt))
+#         conn.commit()
+#
+#
+# delete()
