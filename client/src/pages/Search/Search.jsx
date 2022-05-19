@@ -19,7 +19,7 @@ import "./Search.css";
 import dateFormat from "../../services/functions.js";
 
 function Search() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(0);
   const [key, setKey] = useState("name");
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +81,11 @@ function Search() {
               onChange={(date) => setStartDate(date)}
             />
           )}
-          <Button onClick={handleSearchResults} variant="outline-warning">
+          <Button
+            onClick={handleSearchResults}
+            variant="outline-warning"
+            disabled={!value || !startDate}
+          >
             Search
           </Button>
         </InputGroup>
@@ -99,6 +103,7 @@ function Search() {
               <ItemResult result={result} />
             </Col>
           ))}
+        {results.length === 0 && <h3>No Game :(</h3>}
       </Row>
     </Container>
   );
