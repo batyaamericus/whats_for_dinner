@@ -18,10 +18,16 @@ function ItemResult({ result }) {
         <Card.Title style={{ color: "#FFB22A" }}>
           Odds of {result.teamName} to win
         </Card.Title>
+        <Card.Text style={{ color: "#FFB22A" }}>
+          DK Odds: {result.dk_persentage}%
+        </Card.Text>
+        <Card.Text style={{ color: "#FFB22A" }}>
+          Wise Odds: {result.our_prediction}%
+        </Card.Text>
         <Card.Text
-          style={result.dk_persentage - result.our_prediction > 0 ? green : red}
+          style={result.dk_persentage - result.our_prediction > 0 ? red : green}
         >
-          {result.difference}%
+          Difference: {result.difference}%
         </Card.Text>
       </Card.Body>
     </Card>
