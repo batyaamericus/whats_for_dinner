@@ -16,6 +16,7 @@ import { Dropdown } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Search.css";
+import dateFormat from "../../services/functions.js";
 
 function Search() {
   const [results, setResults] = useState([]);
@@ -28,7 +29,7 @@ function Search() {
     let query = {};
     key === "name"
       ? (query = { [key]: value })
-      : (query = { [key]: startDate });
+      : (query = { [key]: dateFormat(startDate, "yyyy-MM-dd") });
     try {
       setIsLoading(true);
       const req = await searchResults(query);
