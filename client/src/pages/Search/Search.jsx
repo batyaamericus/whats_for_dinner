@@ -16,9 +16,11 @@ import { Dropdown } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Search.css";
+import dateFormat from "../../services/functions.js";
+import Sorry from "../../images/Sorry.gif";
 
 function Search() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(0);
   const [key, setKey] = useState("name");
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +30,7 @@ function Search() {
     let query = {};
     key === "name"
       ? (query = { [key]: value })
-      : (query = { [key]: startDate });
+      : (query = { [key]: dateFormat(startDate, "yyyy-MM-dd") });
     try {
       setIsLoading(true);
       const req = await searchResults(query);
@@ -80,7 +82,11 @@ function Search() {
               onChange={(date) => setStartDate(date)}
             />
           )}
-          <Button onClick={handleSearchResults} variant="outline-warning">
+          <Button
+            onClick={handleSearchResults}
+            variant="outline-warning"
+            disabled={!value || !startDate}
+          >
             Search
           </Button>
         </InputGroup>
@@ -98,6 +104,18 @@ function Search() {
               <ItemResult result={result} />
             </Col>
           ))}
+        {results.length === 0 && (
+          <>
+            <Container>
+              <div className="loaderCont2">
+                <img className="Sorry" src={Sorry} alt="" />
+                <h2 style={{ borderBottom: "5px solid #ffca2c" }}>
+                  No Results Found
+                </h2>
+              </div>
+            </Container>
+          </>
+        )}
       </Row>
     </Container>
   );

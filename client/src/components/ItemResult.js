@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import dateFormat from "../services/functions";
 import "./ItemResult.css";
 
 function ItemResult({ result }) {
@@ -13,7 +14,8 @@ function ItemResult({ result }) {
   return (
     <Card bg="dark" style={{ width: "18rem" }} className="mb-2">
       <Card.Header style={{ color: "#FFB22A" }}>
-        {result.teams.team_1} vs {result.teams.team_2}
+        {result.teams.team_1} vs {result.teams.team_2},{" "}
+        {result.date && dateFormat(result.date, "yyyy-MM-dd")}
       </Card.Header>
       <Card.Body>
         <Card.Title style={{ color: "#FFB22A" }}>

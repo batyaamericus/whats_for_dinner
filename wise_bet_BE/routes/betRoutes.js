@@ -6,7 +6,7 @@ import verifyToken from "../midlewares/verifyToken.js";
 
 const router = Router();
 
-router.get("/top10", verifyToken, top10Control);
+router.get("/top10", top10Control);
 router.get(
   "/search",
   // Validation(searchSchema),

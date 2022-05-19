@@ -4,12 +4,13 @@ async function top10() {
   const QueryResult = await dbConnection
     .from("bets")
     .select(
-      "entry_id",
-      "dk_persentage",
-      "our_prediction",
-      "teamName",
-      "game_id"
-    );
+      "bets.entry_id",
+      "bets.dk_persentage",
+      "bets.our_prediction",
+      "bets.teamName",
+      "bets.game_id",
+      'games.date'
+    ).innerJoin('games', 'bets.game_id' , 'games.game_id');
   return QueryResult;
 }
 
@@ -20,11 +21,12 @@ async function byTeamName(query) {
     const QueryResult = await dbConnection
       .from("bets")
       .select(
-        "dk_persentage",
-        "our_prediction",
-        "teamName",
-        "game_id"
-      )
+        "bets.dk_persentage",
+        "bets.our_prediction",
+        "bets.teamName",
+        "bets.game_id",
+        'games.date'
+      ).innerJoin('games', 'bets.game_id' , 'games.game_id')
       .where("teamName", "like", `%${name}%`)
       .limit(20);
       return QueryResult;
