@@ -21,7 +21,7 @@ code {
 
 body::after {
   background-position: center;
-  background-image: url(https://www.calljacob.com/wp-content/uploads/2020/03/IMG_3880-1-1024x683.jpg);
+  background-image: url("./images/stadium\ lakers.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
