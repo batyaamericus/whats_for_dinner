@@ -10,6 +10,7 @@ import {
 import ItemResult from "../../components/ItemResult";
 import { searchResults } from "../../services/services.js";
 import Loader from "../../images/Loader.gif";
+import "./Search.css"
 
 function Search() {
   const [results, setResults] = useState([]);
@@ -43,12 +44,12 @@ function Search() {
           Search
         </Button>
       </Form>
-      <img src={Loader} alt="" />
-      <p>
-        <a href="https://giphy.com/stickers/wellsfargo-JSpRuzrFfFUBhFdCs8">
-          via GIPHY
-        </a>
-      </p>
+      {isLoading && (
+        <div className="loaderCont">
+          <img className="loader" src={Loader} alt="" />
+        </div>
+      )}
+   
       <Row className="mt-3 justify-content-center">
         {results.length > 0 &&
           results.map((result, index) => (
