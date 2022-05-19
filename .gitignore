@@ -1,5 +1,10 @@
 __pycache__/
 <<<<<<< HEAD
+
+
+node_modules/
+=======
+<<<<<<< HEAD
 .ipynb_checkpoints/
 =======
 git.ipynb_checkpoints/
@@ -26,3 +31,4 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+>>>>>>> 0f93a38e6d660c618859fc54d314f732d11ae65d

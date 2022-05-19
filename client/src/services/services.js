@@ -25,4 +25,9 @@ async function getTopTenResults() {
   return result.data;
 }
 
-export { signUp, logIn, updateUser, getTopTenResults };
+async function searchResults(value) {
+  const result = await api.post(`/search/name`, { value: value });
+  return result.data;
+}
+
+export { signUp, logIn, updateUser, getTopTenResults, searchResults };
