@@ -24,7 +24,8 @@ async function searchByQuary(req, res) {
     const request = await byTeamName(req.query);
     for (let i = 0; i < request.length; i++) {
       request[i].difference = Math.abs(
-        Number(request[i].dk_persentage) - Number(request[i].our_prediction)
+        (Number(request[i].our_prediction) - Number(request[i].dk_persentage)) /
+          Number(request[i].our_prediction)
       );
       request[i].teams = await getTheTeams(request[i].game_id);
     }
