@@ -8,10 +8,13 @@ const router = Router();
 
 router.get("/top10", verifyToken, top10Control);
 router.get(
-  "/search",
-  // Validation(searchSchema),
-  verifyToken,
-  searchByQuary
+  "/search/:key/:question",
+  (req, res) => {
+    res.send(req.query)
+  }
+  // // Validation(searchSchema),
+  // verifyToken,
+  // searchByQuary
 );
 
 export default router;
