@@ -9,7 +9,7 @@ async function top10Control(req, res) {
       );
     }
     request.sort((a, b) => b.difference - a.difference);
-    const result = request.slice(0, 9);
+    const result = request.slice(0, 10);
     for (let i = 0; i < result.length; i++) {
       result[i].teams = await getTheTeams(result[i].game_id);
     }

@@ -5,7 +5,7 @@ import { Row } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import ItemResult from "../components/ItemResult.js";
 import { getTopTenResults } from "../services/services.js";
-import Loader2 from "../images/Loader2.gif"
+import Loader2 from "../images/Loader2.gif";
 import "./TopTen.css";
 
 function TopTen() {
@@ -16,7 +16,6 @@ function TopTen() {
     try {
       setIsLoading(true);
       const res = await getTopTenResults();
-      console.log(res);
       setResults(res);
       setIsLoading(false);
     } catch (error) {
