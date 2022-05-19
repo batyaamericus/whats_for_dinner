@@ -82,11 +82,7 @@ function Search() {
               onChange={(date) => setStartDate(date)}
             />
           )}
-          <Button
-            onClick={handleSearchResults}
-            variant="outline-warning"
-            disabled={!value || !startDate}
-          >
+          <Button onClick={handleSearchResults} variant="outline-warning">
             Search
           </Button>
         </InputGroup>
