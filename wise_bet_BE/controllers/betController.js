@@ -21,6 +21,7 @@ async function top10Control(req, res) {
 
 async function searchByQuary(req, res) {
   try {
+    
     const request = await byTeamName(req.query);
     for (let i = 0; i < request.length; i++) {
       request[i].difference = Math.abs(

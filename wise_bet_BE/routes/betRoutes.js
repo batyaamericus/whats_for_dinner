@@ -10,8 +10,8 @@ router.get("/top10", verifyToken, top10Control);
 router.get(
   "/search",
   // Validation(searchSchema),
-  verifyToken,
   searchByQuary
 );
+//verifyToken,
 
 export default router;
