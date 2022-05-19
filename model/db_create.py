@@ -23,6 +23,3 @@ def create_tables():
     creates the tables in our database according to the details found in db_structure
     """
     db_structure.Base.metadata.create_all(engine, checkfirst=True)
-
-
-create_tables()
