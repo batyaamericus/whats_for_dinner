@@ -14,19 +14,32 @@ async function top10() {
 }
 
 async function byTeamName(query) {
-  const { name } = query;
-  const QueryResult = await dbConnection
-    .from("bets")
-    .select(
-      // "entry_id",
-      "dk_persentage",
-      "our_prediction",
-      "teamName",
-      "game_id"
-    )
-    .where("teamName", "like", `%${name}%`)
-    .limit(20);
-  return QueryResult;
+  const { name, date } = query;
+  if (name) {
+
+    const QueryResult = await dbConnection
+      .from("bets")
+      .select(
+        "dk_persentage",
+        "our_prediction",
+        "teamName",
+        "game_id"
+      )
+      .where("teamName", "like", `%${name}%`)
+      .limit(20);
+      return QueryResult;
+
+  } else if(date){
+
+      console.log("inside date: ", date)
+      const QueryResult = await dbConnection.from('bets')
+        .select('bets.game_id', 'bets.our_prediction', 'bets.teamName', 'games.date', 'bets.dk_persentage', 'bets.entry_id')
+        .innerJoin('games', 'bets.game_id' , 'bets.game_id')
+        .where("games.date", "=", `${date}`)
+        .limit(20);
+      return QueryResult;
+  }
+
 }
 
 async function getTheTeams(game_id) {
